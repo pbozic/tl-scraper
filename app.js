@@ -7,12 +7,23 @@ const puppeteer = require('puppeteer');
 const cheerio = require('cheerio');
 var bodyParser = require('body-parser')
 const fs = require('fs');
+const exec = require('await-exec')
+
 // Define a port number for the server to listen on
 const port = 3000;
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
+
+(async () => {
+    await exec("npx puppeteer browsers install chrome")
+    // Start the server and listen on the specified port
+    app.listen(port, () => {
+        console.log(`Express app is listening at http://localhost:${port}`);
+    });
+})()
+
   // Helper function to parse numbers
   const parseNumber = (text) => {
     const number = parseFloat(text.replace(/,/g, '').replace(/[^0-9.]/g, ''));
@@ -76,7 +87,3 @@ app.post('/', async (req, res) => {
     res.json(stats);
 });
 
-// Start the server and listen on the specified port
-app.listen(port, () => {
-  console.log(`Express app is listening at http://localhost:${port}`);
-});
