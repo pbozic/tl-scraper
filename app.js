@@ -58,19 +58,19 @@ app.post('/', async (req, res) => {
     const browser = await puppeteer.launch({
         headless: true,
         defaultViewport: {
-            width:1920,
-            height:1080
+            width:  1920,
+            height: 1080
       } 
     });
     const page = await browser.newPage();
-  
+    console.log(req.body.url)
     // Replace this URL with the URL of the page you want to scrape
     await page.goto(req.body.url, { waitUntil: 'networkidle0' });
     // Optionally, wait for a specific element to appear on the page
-    await page.waitForSelector('.tabular-nums', { timeout: 5000 });
+    await page.waitForSelector('.tabular-nums', { timeout: 50000 });
     // Get the HTML content of the page
     const html = await page.content();
-    fs.writeFileSync('output.html', html);
+
     //console.log(html)
     const $ = cheerio.load(html);
     // Load HTML content from a file or directly from a string
