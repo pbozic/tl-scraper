@@ -232,7 +232,7 @@ function extractStats(aside) {
 	const stats = {};
 
 	// Extract data from each section
-	$('.border.border-default').each((index, element) => {
+	$('.rounded.border.border-default.bg-default:not(.px-2)').each((index, element) => {
 		const $element = $(element);
 		const groupName = $element.find('h3').first().text().trim(); // Get the group name from the first h3 element
 		const groupData = {};
