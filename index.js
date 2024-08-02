@@ -26,7 +26,6 @@ app.post('/', async (req, res) => {
 		return res.status(405).json({ error: 'Method not allowed, use POST' });
 	}
 	try {
-		const antibrowser = await antibotbrowser.startbrowser();
 		// const browser = await puppeteer.connect({
         //     headless:true, 
         //     browserWSEndpoint: 
