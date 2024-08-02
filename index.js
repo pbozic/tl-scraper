@@ -189,14 +189,8 @@ app.post('/', async (req, res) => {
 		// Optionally, wait for a specific element to appear on the page
 		console.log("Page loaded")
 		// Get the HTML content of the page
-		const screenshotBuffer = await page.screenshot();
-		const screenshotBase64 = screenshotBuffer.toString('base64');
 		const html = await page.content();
-		const pageUrl = page.url();
-		console.log("url", pageUrl)
-
 		console.log("Content loaded")
-		const cookies = await page.cookies();
 		//console.log(html)
 		const $ = cheerio.load(html);
 		// Load HTML content from a file or directly from a string
