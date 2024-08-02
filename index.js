@@ -9,7 +9,6 @@ let cors = require('cors');
 let http = require('http');
 let https = require('https');
 let axios = require('axios');
-let puppeteer = require('./api/puppeteer');
 
 app.use(cors());
 app.use(bodyParser.json());
