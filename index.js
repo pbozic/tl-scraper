@@ -4,6 +4,7 @@ let puppeteer = require('puppeteer');
 let bodyParser = require('body-parser');
 let antibotbrowser = require('antibotbrowser');
 let cheerio = require('cheerio');
+const chromium = require("@sparticuz/chromium-min")
 let cors = require('cors');
 let http = require('http');
 let https = require('https');
@@ -26,26 +27,26 @@ app.post('/', async (req, res) => {
 	}
 	try {
 		const antibrowser = await antibotbrowser.startbrowser();
-		const browser = await puppeteer.connect({
-            headless:true, 
-            browserWSEndpoint: 
-            antibrowser.websokcet, 
-            defaultViewport: {
-             		width: 1920,
-            		height: 1080
-            }
-        });
-		// const browser = await puppeteer.launch({
-		// 	headless: false,
-		// 	args: [...chromium.args, `--proxy-server =${proxy.host}:${proxy.port}`],
-		// 	executablePath: await chromium.executablePath(
-		// 		`https://github.com/Sparticuz/chromium/releases/download/v126.0.0/chromium-v126.0.0-pack.tar`
-		// 	),
-		// 	defaultViewport: {
-		// 		width: 1920,
-		// 		height: 1080
-		// 	}
-		// });
+		// const browser = await puppeteer.connect({
+        //     headless:true, 
+        //     browserWSEndpoint: 
+        //     antibrowser.websokcet, 
+        //     defaultViewport: {
+        //      		width: 1920,
+        //     		height: 1080
+        //     }
+        // });
+		const browser = await puppeteer.launch({
+			headless: false,
+			args: [...chromium.args, `--proxy-server =${proxy.host}:${proxy.port}`],
+			executablePath: await chromium.executablePath(
+				`https://github.com/Sparticuz/chromium/releases/download/v126.0.0/chromium-v126.0.0-pack.tar`
+			),
+			defaultViewport: {
+				width: 1920,
+				height: 1080
+			}
+		});
 		let [page] = await browser.pages(); // Gets the first page/tab in the browser
 		await page.setExtraHTTPHeaders({
 			'Accept-Language': 'en'
