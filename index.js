@@ -19,7 +19,6 @@ app.get('/', (req, res) => {
 );
 app.post('/', async (req, res) => {
     //const proxies = await fetchAndTestProxies();
-	console.log("proxies", proxies)
 	//const proxy = proxies[0];
 	console.log("Request received")
 	if (req.method !== 'POST') {
