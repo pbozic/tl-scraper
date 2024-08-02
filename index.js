@@ -3,6 +3,7 @@ let app = express();
 let puppeteer = require('puppeteer');
 let bodyParser = require('body-parser');
 let antibotbrowser = require('antibotbrowser');
+let cheerio = require('cheerio');
 let cors = require('cors');
 let http = require('http');
 let https = require('https');
@@ -25,7 +26,15 @@ app.post('/', async (req, res) => {
 	}
 	try {
 		const antibrowser = await antibotbrowser.startbrowser();
-		const browser = await puppeteer.connect({browserWSEndpoint: antibrowser.websokcet});
+		const browser = await puppeteer.connect({
+            headless:true, 
+            browserWSEndpoint: 
+            antibrowser.websokcet, 
+            defaultViewport: {
+             		width: 1920,
+            		height: 1080
+            }
+        });
 		// const browser = await puppeteer.launch({
 		// 	headless: false,
 		// 	args: [...chromium.args, `--proxy-server =${proxy.host}:${proxy.port}`],
@@ -197,17 +206,11 @@ app.post('/', async (req, res) => {
 
 
 		// Extract stats
-		//const stats = extractStats(aside);
+		const stats = extractStats(aside);
 
 		// Write to JSON file
 		//console.log(JSON.stringify(stats, null, 2));
-		res.json({
-			cookies: cookies,
-			sc: `data:image/png;base64,${screenshotBase64}`,
-			log: consoleData,
-			requests: requests,
-			responses: responses,
-		});
+		res.json(stats);
 	} catch (error) {
 		console.error(error);
 		res.status(500).json({ error: 'An error occurred' });
