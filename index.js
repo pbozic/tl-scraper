@@ -18,9 +18,9 @@ app.get('/', (req, res) => {
 }
 );
 app.post('/', async (req, res) => {
-    const proxies = await fetchAndTestProxies();
+    //const proxies = await fetchAndTestProxies();
 	console.log("proxies", proxies)
-	const proxy = proxies[0];
+	//const proxy = proxies[0];
 	console.log("Request received")
 	if (req.method !== 'POST') {
 		return res.status(405).json({ error: 'Method not allowed, use POST' });
