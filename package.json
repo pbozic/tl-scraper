@@ -2,6 +2,7 @@
   "name": "tl-scraper",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,14 +11,29 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@sparticuz/chromium-min": "^126.0.0",
+    "antibotbrowser": "^1.0.5",
     "await-exec": "^0.1.2",
     "axios": "^1.7.3",
     "body-parser": "^1.20.2",
     "cheerio": "^1.0.0-rc.12",
     "chromium": "^3.0.3",
+    "cosmiconfig": "^9.0.0",
     "express": "^4.19.2",
+    "extract-zip": "^2.0.1",
+    "free-proxy": "^0.2.1",
+    "http-proxy-agent": "^7.0.2",
+    "https": "^1.0.0",
+    "https-proxy-agent": "^7.0.4",
+    "lambdafs": "^2.1.1",
+    "node-fetch": "^3.3.2",
     "node-html-parser": "^6.1.13",
+    "node-proxifyjs": "^2.1.0",
     "nodemon": "^3.1.4",
-    "puppeteer": "^22.15.0"
+    "proxy-lists": "^1.23.3",
+    "puppeteer-core": "^22.15.0",
+    "socks-proxy-agent": "^8.0.2",
+    "sqlite3": "^5.1.7",
+    "ws": "^8.16.0"
   }
 }
