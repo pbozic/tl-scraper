@@ -204,6 +204,12 @@ app.post('/', async (req, res) => {
 
 		// Write to JSON file
 		//console.log(JSON.stringify(stats, null, 2));
+        try {
+            browser.close();
+        } catch (error) {
+            console.error(error);
+        }
+        
 		res.json(stats);
 	} catch (error) {
 		console.error(error);
