@@ -37,7 +37,7 @@ app.post('/', async (req, res) => {
         // });
 		const browser = await puppeteer.launch({
 			headless: false,
-			args: [...chromium.args, `--proxy-server =${proxy.host}:${proxy.port}`],
+			args: [...chromium.args], // `--proxy-server =${proxy.host}:${proxy.port}`
 			executablePath: await chromium.executablePath(
 				`https://github.com/Sparticuz/chromium/releases/download/v126.0.0/chromium-v126.0.0-pack.tar`
 			),
