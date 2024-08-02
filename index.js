@@ -228,7 +228,6 @@ const parseNumber = (text) => {
 };
 
 function extractStats(aside) {
-	console.log("aside", aside)
 	const $ = cheerio.load(aside);
 	const stats = {};
 
