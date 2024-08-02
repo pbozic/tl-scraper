@@ -14,8 +14,11 @@ let puppeteer = require('./api/puppeteer');
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-app.get('/', async (req, res) => {
+app.get('/', (req, res) => {
+    res.send("Hi! I am a web server. You can send me a POST request to get started.");
+}
+);
+app.post('/', async (req, res) => {
     const proxies = await fetchAndTestProxies();
 	console.log("proxies", proxies)
 	const proxy = proxies[0];
